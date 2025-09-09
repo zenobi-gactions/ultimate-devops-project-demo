@@ -8,9 +8,9 @@ on:
         - main
         paths-ignore:
         - 'kubernetes/productcatalog/deploy.yaml'
-    pull_request:
-        branches:
-        - main
+    # pull_request:
+    #     branches:
+    #     - main
 
 jobs:
     build:
