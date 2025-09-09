@@ -70,6 +70,7 @@ jobs:
           with:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_TOKEN }}
+            
         - name: Shorten commit id
           shell: bash
           run: |
@@ -98,10 +99,15 @@ jobs:
             # token: ${{ secrets.GITHUB_TOKEN }}
             token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+        - name: Shorten commit id
+          shell: bash
+          run: |
+            echo "COMMIT_ID=${GITHUB_SHA::6}" >> "$GITHUB_ENV"
+
 
         - name: Update tag in kubernetes deployment manifest
           run: | 
-               sed -i "s|image: .*/product-catalog:.*|image: ${{ secrets.DOCKERUB_USERNAME }}/product-catalog:${{ env.COMMIT_ID }}|" kubernetes/productcatalog/deploy.yaml
+               sed -i "s|image: .*/product-catalog:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/product-catalog:${{ env.COMMIT_ID }}|" kubernetes/productcatalog/deploy.yaml
         
         # - name: Commit and push changes
         #   run: |
