@@ -32,7 +32,7 @@ spec:
       containers:
 <<<<<<< HEAD
       - name: productcatalogservice
-        image: andynze4/product-catalog:4a96f9
+        image: andynze4/product-catalog:dd74cd
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -68,7 +68,7 @@ spec:
 #
 =======
         - name: productcatalogservice
-          image: andynze4/product-catalog:4a96f9
+          image: andynze4/product-catalog:dd74cd
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
