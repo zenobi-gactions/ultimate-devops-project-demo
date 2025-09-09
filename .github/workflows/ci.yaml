@@ -127,3 +127,6 @@ jobs:
             git add kubernetes/productcatalog/deploy.yaml
             git commit -m "[CI]: Update product catalog image tag" || echo "No changes to commit"
             git push origin main
+### NOTE: The following step requires a personal access token with repo permissions to work. The default GITHUB_TOKEN does not have permission to push to the repository.
+        #       You can create a PAT from your GitHub account settings and add it as a secret in your repository settings.
+        #       Then, you can use the secret in the workflow file as shown above.
