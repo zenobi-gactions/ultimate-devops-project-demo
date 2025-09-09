@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   name: opentelemetry-demo-productcatalogservice
   labels:
-    
+
     opentelemetry.io/name: opentelemetry-demo-productcatalogservice
     app.kubernetes.io/instance: opentelemetry-demo
     app.kubernetes.io/component: productcatalogservice
@@ -17,12 +17,12 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      
+
       opentelemetry.io/name: opentelemetry-demo-productcatalogservice
   template:
     metadata:
       labels:
-        
+
         opentelemetry.io/name: opentelemetry-demo-productcatalogservice
         app.kubernetes.io/instance: opentelemetry-demo
         app.kubernetes.io/component: productcatalogservice
@@ -30,6 +30,7 @@ spec:
     spec:
       serviceAccountName: opentelemetry-demo
       containers:
+<<<<<<< HEAD
         - name: productcatalogservice
           image: /product-catalog:17568097854
           imagePullPolicy: IfNotPresent
@@ -62,3 +63,39 @@ spec:
               memory: 20Mi
           volumeMounts:
       volumes:
+=======
+      - name: productcatalogservice
+        image: andynze4/product-catalog:17567888157
+        imagePullPolicy: IfNotPresent
+        ports:
+
+        - containerPort: 8080
+          name: service
+        env:
+        - name: OTEL_SERVICE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.labels['app.kubernetes.io/component']
+        - name: OTEL_COLLECTOR_NAME
+          value: 'opentelemetry-demo-otelcol'
+        - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+          value: cumulative
+        - name: PRODUCT_CATALOG_SERVICE_PORT
+          value: "8080"
+        - name: FLAGD_HOST
+          value: 'opentelemetry-demo-flagd'
+        - name: FLAGD_PORT
+          value: "8013"
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: http://$(OTEL_COLLECTOR_NAME):4317
+        - name: OTEL_RESOURCE_ATTRIBUTES
+          value: service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version=1.12.0
+        resources:
+          limits:
+            memory: 20Mi
+            cpu: 200m
+          requests:
+            memory: 10Mi
+            cpu: 100m
+>>>>>>> 8204c7c (New Test CommitID Shorten)
