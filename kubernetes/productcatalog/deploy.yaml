@@ -32,7 +32,7 @@ spec:
       containers:
 <<<<<<< HEAD
         - name: productcatalogservice
-          image: /product-catalog:17568097854
+          image: /product-catalog:
           imagePullPolicy: IfNotPresent
           ports:
             
@@ -65,7 +65,7 @@ spec:
       volumes:
 =======
       - name: productcatalogservice
-        image: andynze4/product-catalog:17567888157
+        image: /product-catalog:
         imagePullPolicy: IfNotPresent
         ports:
 
