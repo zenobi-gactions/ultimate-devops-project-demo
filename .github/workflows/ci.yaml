@@ -8,7 +8,6 @@ on:
         - main
         paths-ignore:
         - 'kubernetes/productcatalog/deploy.yaml'
-
     # pull_request:
     #     branches:
     #     - main
@@ -127,5 +126,3 @@ jobs:
             git add kubernetes/productcatalog/deploy.yaml
             git commit -m "[CI]: Update product catalog image tag" || echo "No changes to commit"
             git push origin main
-        
-##
