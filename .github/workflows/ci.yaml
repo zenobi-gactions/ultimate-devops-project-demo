@@ -145,13 +145,13 @@ jobs:
             sudo mv argocd /usr/local/bin/argocd
             echo "✅ ArgoCD CLI installed successfully."
 
-        - name: Login to ArgoCD
-          shell: bash
-          run: |
-            argocd login k8s-argocd-fcd9021302-1197223614.us-east-1.elb.amazonaws.com --username admin --password ${{ secrets.ARGOCD_PASSWORD }} --insecure
-            echo "✅ Logged in to ArgoCD successfully."
-        - name: Sync Application
-          shell: bash
-          run: |
-            argocd app sync product-catalog --grpc-web
-            echo "✅ ArgoCD Application synced successfully."
+        # - name: Login to ArgoCD
+        #   shell: bash
+        #   run: |
+        #     argocd login k8s-argocd-fcd9021302-1197223614.us-east-1.elb.amazonaws.com --username admin --password ${{ secrets.ARGOCD_PASSWORD }} --insecure
+        #     echo "✅ Logged in to ArgoCD successfully."
+        # - name: Sync Application
+        #   shell: bash
+        #   run: |
+        #     argocd app sync product-catalog --grpc-web
+        #     echo "✅ ArgoCD Application synced successfully."
