@@ -140,7 +140,7 @@ jobs:
         - name: Install ArgoCD CLI
           shell: bash
           run: |
-            curl -ksSL -o /tmp/argocd http://k8s-argocd-fcd9021302-1197223614.us-east-1.elb.amazonaws.com/argocd/download/argocd-linux-arm64
+            curl -ksSL -o /tmp/argocd http://k8s-argocd-fcd9021302-1197223614.us-east-1.elb.amazonaws.com/argocd/download/argocd-linux-arm64 
             chmod +x /tmp/argocd
             sudo mv /tmp/argocd /usr/local/bin/argocd
             echo "✅ ArgoCD CLI installed successfully."
@@ -148,5 +148,10 @@ jobs:
         - name: Login to ArgoCD
           shell: bash
           run: |
-            argocd login argocd-server.argocd --username admin --password ${{ secrets.ARGOCD_PASSWORD }} --insecure
-            echo "✅ Logged in to ArgoCD successfully." 
+            http://k8s-argocd-fcd9021302-1197223614.us-east-1.elb.amazonaws.com/argocd --username admin --password ${{ secrets.ARGOCD_PASSWORD }} --insecure
+            echo "✅ Logged in to ArgoCD successfully."
+        - name: Sync Application
+          shell: bash
+          run: |
+            argocd app sync product-catalog --grpc-web
+            echo "✅ ArgoCD Application synced successfully."
