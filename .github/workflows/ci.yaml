@@ -148,7 +148,7 @@ jobs:
         - name: Login to ArgoCD
           shell: bash
           run: |
-            http://k8s-argocd-fcd9021302-1197223614.us-east-1.elb.amazonaws.com/argocd --username admin --password ${{ secrets.ARGOCD_PASSWORD }} --insecure
+            http://k8s-argocd-fcd9021302-1197223614.us-east-1.elb.amazonaws.com/argocd/ --username admin --password ${{ secrets.ARGOCD_PASSWORD }} --insecure
             echo "✅ Logged in to ArgoCD successfully."
         - name: Sync Application
           shell: bash
