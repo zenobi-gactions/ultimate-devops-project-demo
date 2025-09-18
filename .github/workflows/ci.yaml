@@ -144,3 +144,9 @@ jobs:
             chmod +x /tmp/argocd
             sudo mv /tmp/argocd /usr/local/bin/argocd
             echo "✅ ArgoCD CLI installed successfully."
+
+        - name: Login to ArgoCD
+          shell: bash
+          run: |
+            argocd login argocd-server.argocd --username admin --password ${{ secrets.ARGOCD_PASSWORD }} --insecure
+            echo "✅ Logged in to ArgoCD successfully." 
